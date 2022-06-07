@@ -1,0 +1,121 @@
+
+      
+
+  <html>
+    <head>
+      <title>Default Map</title>
+      <meta name="viewport" content="initial-scale=1.0">
+      <meta charset="utf-8">
+      <link rel="stylesheet" href="styles.css">
+      <style>
+        #infoWindow {
+  padding: 2px;
+  
+  /* border-s :dotted; */
+  border-color: #ddd;
+  /* background-color: aqua; */
+  font-family: 'Times New Roman', Times, serif;
+  font-style: italic;
+  
+  font-weight: 200;
+  font-size:large;
+        }
+        #auto{
+  color: #000;
+  max-width: 99%;
+  width:300px;
+  position:absolute;
+  z-index: 999;
+  font-size: 15px;
+  padding:10px;
+  border: 1px solid #ddd;
+  outline: none !important;
+  top:5px;
+  border-radius:10px;
+  margin:4px;
+        }
+        html,body,#map {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+        }  
+      </style>
+    <script src="https://apis.mappls.com/advancedmaps/api/09232894df536826f43d9cdc5fdc4c5f/map_sdk?layer=vector&v=3.0&callback=initMap1" defer async></script>
+    <script src="https://apis.mapmyindia.com/advancedmaps/api/624441db310ae1eeeb351f9abcde2ed2/map_sdk_plugins"></script>
+    </head>
+    <body>
+        <input type = "text" id="auto" name="auto" class="search-outer form-control as-input" placeholder="Search for places..." spellcheck="flase">
+
+        <div id="map"></div>
+        <script src = "index.js"> </script>
+    </body>
+  </html>
+  
+
+
+<!-- <html>
+   <head>
+      <title>MapmyIndia Plugin - Search Plugin</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="desciption" content="Mapmyindia Search Plugin">
+      <script src="https://apis.mapmyindia.com/advancedmaps/v1/09232894df536826f43d9cdc5fdc4c5f/map_load?v=1.5"></script>
+      <script src="https://apis.mapmyindia.com/advancedmaps/api/624441db310ae1eeeb351f9abcde2ed2/map_sdk_plugins"></script>
+      <style>
+         body{margin: 0}
+         #map{
+         width: 100%; height: 100vh;margin:0;padding: 0;
+         }
+         .infoCls_map{margin-top: 60px !important;min-width: 300px}
+         #auto{color: #000;max-width: 99%;width:300px;position:absolute;z-index: 999;font-size: 15px;padding:10px;border: 1px solid #ddd;outline: none !important;top:5px;border-radius:10px;margin:4px;}
+      </style>
+   </head>
+   <body>
+      <div id="map"></div>
+      <input  type="text" id="auto" name="auto" class="search-outer form-control as-input" placeholder="Search places or eLoc's..." required="" spellcheck="false" >
+      <script>
+         /*Map Initialization*/
+          var map = new MapmyIndia.Map('map', {center: [28.09, 78.3], zoom: 5, search: false});
+          
+          /*Search plugin initialization*/
+            var optional_config={
+                location:[28.61, 77.23],
+               /* pod:'City',
+                bridge:true,
+                tokenizeAddress:true,*
+                filter:'cop:9QGXAM',
+                distance:true,
+                width:300,
+                height:300*/
+            };
+            new MapmyIndia.search(document.getElementById("auto"),optional_config,callback);
+            
+            /*CALL for fix text - LIKE THIS
+             * 
+             new MapmyIndia.search("agra",optional_config,callback);
+             * 
+             * */
+         
+            var marker;
+            function callback(data) { 
+                if(data)
+                {
+                    console.log(data);
+                    var dt=data[0];
+                    if(!dt) return false;
+                    var eloc=dt.eLoc;
+                    var place=dt.placeName+", "+dt.placeAddress;
+                    /*Use elocMarker Plugin to add marker*/
+                    if(marker) marker.remove();
+                    marker=new MapmyIndia.elocMarker({
+                        map:map,
+                        eloc:eloc,
+                        popupHtml:place,
+                        popupOptions:{openPopup:true},
+                        icon:{url:'https://apis.mapmyindia.com/map_v3/1.png',width:30,height:45}
+                    }).fitbounds();
+                }
+              }    
+      </script>
+   </body>
+</html> -->
